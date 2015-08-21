@@ -14,17 +14,18 @@ public class AlsoGroupCreationTests extends TestBase {
     group.header = "header 1";
     group.footer = "footer 1";
 	fillGroupForm(group);
-    submitGroupCreation();
+    clickSubmit();
     returnToGroupsPage();
   }
 
+  
   @Test
   public void testEmptyGroupCreation() throws Exception {
 	openMainPage();
     gotoGroupsPage();
     initGroupCreation();
     fillGroupForm(new GroupData("", "", ""));
-    submitGroupCreation();
+    clickSubmit();
     returnToGroupsPage();
   }
 }
