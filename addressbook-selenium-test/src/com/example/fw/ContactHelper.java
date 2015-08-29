@@ -38,8 +38,31 @@ public class ContactHelper extends HelperBase {
 		click(By.name("submit"));
 	}
 
-	public void returntoHomeAfterContactCreation() {
+	public void returntoHomePage() {
 		click(By.linkText("home page"));
+	}
+	
+	public void gotoContactDetails(int index) {
+		click(By.xpath(".//*[@id='maintable']/tbody/tr[" + (index+1) + "]/td[6]/a/img"));		
+	}
+	
+	public void gotoContactEdit(int index) {
+		click(By.xpath(".//*[@id='maintable']/tbody/tr[" + (index+1) + "]/td[7]/a/img"));		
+	}
+	
+	public void gotoContactModify() {
+		click(By.name("modifiy"));
+		
+	}
+	
+	public void clickContactDelete() {
+		click(By.xpath(".//*[@id='content']/form[2]/input[2]"));
+		
+	}
+	
+	public void clickContactUpdate() {
+		click(By.xpath(".//*[@id='content']/form[1]/input[11]"));
+		
 	}
 
 }
