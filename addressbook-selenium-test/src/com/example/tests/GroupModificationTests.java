@@ -1,5 +1,10 @@
 package com.example.tests;
 
+import static org.testng.Assert.assertEquals;
+
+import java.util.Collections;
+import java.util.List;
+
 import org.testng.annotations.Test;
 
 public class GroupModificationTests extends TestBase{
@@ -9,12 +14,18 @@ public class GroupModificationTests extends TestBase{
 	public void modifySomeGroupName () {
 		app.getNavigationHelper().openMainPage();
 	    app.getNavigationHelper().gotoGroupsPage();
-		app.getGroupHelper().initGroupModification(1);
+	    List<GroupData> oldList = app.getGroupHelper().getGroups();
+		app.getGroupHelper().initGroupModification(0);
 		GroupData group = new GroupData();
 		group.name = "new name";
 		app.getGroupHelper().fillGroupForm(group);
 		app.getGroupHelper().submitGroupModification();
 		app.getGroupHelper().returnToGroupsPage();
+	    List<GroupData> newList = app.getGroupHelper().getGroups();
+	    oldList.remove(0);
+	    oldList.add(group);
+	    Collections.sort(oldList);
+	    assertEquals(newList, oldList);
 	}
 	
 	@Test
@@ -22,12 +33,15 @@ public class GroupModificationTests extends TestBase{
 	public void modifySomeGroupHeader () {
 		app.getNavigationHelper().openMainPage();
 	    app.getNavigationHelper().gotoGroupsPage();
-		app.getGroupHelper().initGroupModification(1);
+	    List<GroupData> oldList = app.getGroupHelper().getGroups();
+		app.getGroupHelper().initGroupModification(0);
 		GroupData group = new GroupData();
 		group.header = "new header";
 		app.getGroupHelper().fillGroupForm(group);
 		app.getGroupHelper().submitGroupModification();
 		app.getGroupHelper().returnToGroupsPage();
+	    List<GroupData> newList = app.getGroupHelper().getGroups();
+	    assertEquals(newList, oldList);
 	}
 
 	@Test
@@ -35,12 +49,15 @@ public class GroupModificationTests extends TestBase{
 	public void modifySomeGroupFooter () {
 		app.getNavigationHelper().openMainPage();
 	    app.getNavigationHelper().gotoGroupsPage();
-		app.getGroupHelper().initGroupModification(1);
+	    List<GroupData> oldList = app.getGroupHelper().getGroups();
+		app.getGroupHelper().initGroupModification(0);
 		GroupData group = new GroupData();
 		group.footer = "new footer";
 		app.getGroupHelper().fillGroupForm(group);
 		app.getGroupHelper().submitGroupModification();
 		app.getGroupHelper().returnToGroupsPage();
+	    List<GroupData> newList = app.getGroupHelper().getGroups();
+	    assertEquals(newList, oldList);
 	}
 	
 	@Test
@@ -48,7 +65,8 @@ public class GroupModificationTests extends TestBase{
 	public void modifySomeGroupAllFields () {
 		app.getNavigationHelper().openMainPage();
 	    app.getNavigationHelper().gotoGroupsPage();
-		app.getGroupHelper().initGroupModification(1);
+	    List<GroupData> oldList = app.getGroupHelper().getGroups();
+		app.getGroupHelper().initGroupModification(0);
 		GroupData group = new GroupData();
 		group.name = "new name2";
 		group.header = "new header2";
@@ -56,7 +74,11 @@ public class GroupModificationTests extends TestBase{
 		app.getGroupHelper().fillGroupForm(group);
 		app.getGroupHelper().submitGroupModification();
 		app.getGroupHelper().returnToGroupsPage();
+	    List<GroupData> newList = app.getGroupHelper().getGroups();
+	    oldList.remove(0);
+	    oldList.add(group);
+	    Collections.sort(oldList);
+	    assertEquals(newList, oldList);
 	}
-
 
 }

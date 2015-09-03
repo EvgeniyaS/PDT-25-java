@@ -8,7 +8,6 @@ public class ContactHelper extends HelperBase {
 
 	public ContactHelper(ApplicationManager manager) {
 		super(manager);
-
 	}
 
 	public void gotoAddNewContact() {
@@ -30,7 +29,6 @@ public class ContactHelper extends HelperBase {
 	    //selectByText(By.name("new_group"), contact.contactgroup);
 	    type(By.name("address2"), contact.secondaryaddress);
 	    type(By.name("phone2"), contact.phone2);
-
 	}
 
 
@@ -43,26 +41,23 @@ public class ContactHelper extends HelperBase {
 	}
 	
 	public void gotoContactDetails(int index) {
-		click(By.xpath(".//*[@id='maintable']/tbody/tr[" + (index+1) + "]/td[6]/a/img"));		
+		click(By.xpath(".//*[@id='maintable']/tbody/tr[" + (index+2) + "]/td[6]/a/img"));		
 	}
 	
 	public void gotoContactEdit(int index) {
-		click(By.xpath(".//*[@id='maintable']/tbody/tr[" + (index+1) + "]/td[7]/a/img"));		
+		click(By.xpath(".//*[@id='maintable']/tbody/tr[" + (index+2) + "]/td[7]/a/img"));		
 	}
 	
 	public void gotoContactModify() {
 		click(By.name("modifiy"));
-		
 	}
 	
 	public void clickContactDelete() {
 		click(By.xpath(".//*[@id='content']/form[2]/input[2]"));
-		
 	}
 	
 	public void clickContactUpdate() {
 		click(By.xpath(".//*[@id='content']/form[1]/input[11]"));
-		
 	}
 
 }

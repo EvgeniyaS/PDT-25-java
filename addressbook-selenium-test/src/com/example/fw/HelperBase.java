@@ -16,10 +16,9 @@ public abstract class HelperBase {
 	public HelperBase(ApplicationManager manager) {
 		this.manager = manager;	
 		this.driver = manager.driver;
-		
 	}
 	
-	public boolean isElementPresent(By by) {
+	protected boolean isElementPresent(By by) {
 	    try {
 	      driver.findElement(by);
 	      return true;
@@ -28,7 +27,7 @@ public abstract class HelperBase {
 	    }
 	  }
 
-	public String closeAlertAndGetItsText() {
+	protected String closeAlertAndGetItsText() {
 	    try {
 	      Alert alert = driver.switchTo().alert();
 	      String alertText = alert.getText();
@@ -43,7 +42,7 @@ public abstract class HelperBase {
 	    }
 	  }
 
-	public boolean isAlertPresent() {
+	protected boolean isAlertPresent() {
 	    try {
 	      driver.switchTo().alert();
 	      return true;
@@ -57,7 +56,6 @@ public abstract class HelperBase {
 			driver.findElement(locator).clear();
 		    driver.findElement(locator).sendKeys(text);			
 		}
-
 	}
 
 	protected void click(By locator) {
@@ -68,8 +66,6 @@ public abstract class HelperBase {
 		if (text != null) {
 			new Select(driver.findElement(locator)).selectByVisibleText(text);			
 		}
-		
 	}
 	
-
 }

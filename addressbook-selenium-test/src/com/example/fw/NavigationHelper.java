@@ -6,7 +6,6 @@ public class NavigationHelper extends HelperBase {
 
 	public NavigationHelper(ApplicationManager manager) {
 		super(manager);
-	
 	}
 
 	public void openMainPage() {
@@ -16,5 +15,4 @@ public class NavigationHelper extends HelperBase {
 	public void gotoGroupsPage() {
 		click(By.linkText("groups"));
 	}
-
 }
