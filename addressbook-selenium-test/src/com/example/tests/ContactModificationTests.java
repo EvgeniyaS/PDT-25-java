@@ -1,14 +1,19 @@
 package com.example.tests;
 
+import static org.testng.Assert.assertEquals;
+
+import java.util.Collections;
+import java.util.List;
+
 import org.testng.annotations.Test;
 
 public class ContactModificationTests extends TestBase {
 	
-	@Test
+	//@Test
 	
 	public void contactModificationByDetails() {
 	app.getNavigationHelper().openMainPage();
-	app.getContactHelper().gotoContactDetails(1);
+	app.getContactHelper().gotoContactDetails(0);
 	app.getContactHelper().gotoContactModify();	
 	ContactData contact = new ContactData();
 	contact.firstname = "new firstname";
@@ -17,11 +22,11 @@ public class ContactModificationTests extends TestBase {
 	app.getContactHelper().returntoHomePage();
 	}
 	
-	@Test
+	//@Test
 	
 	public void contactModificationByEdit() {
 	app.getNavigationHelper().openMainPage();
-	app.getContactHelper().gotoContactEdit(1);
+	app.getContactHelper().gotoContactEdit(0);
 	ContactData contact = new ContactData();
 	contact.lastname = "new lastname";
 	app.getContactHelper().fillContactForm(contact);
@@ -33,7 +38,8 @@ public class ContactModificationTests extends TestBase {
 	
 	public void contactModificationAllFields() {
 	app.getNavigationHelper().openMainPage();
-	app.getContactHelper().gotoContactDetails(1);
+	List<ContactData> oldList = app.getContactHelper().getContacts();
+	app.getContactHelper().gotoContactDetails(0);
 	app.getContactHelper().gotoContactModify();	
 	ContactData contact = new ContactData();
     contact.firstname = "new FirstName";
@@ -53,6 +59,11 @@ public class ContactModificationTests extends TestBase {
 	app.getContactHelper().fillContactForm(contact);
 	app.getContactHelper().clickContactUpdate();
 	app.getContactHelper().returntoHomePage();
+    List<ContactData> newList = app.getContactHelper().getContacts();
+    oldList.remove(0);
+    oldList.add(contact);
+    Collections.sort(oldList);
+    assertEquals(newList, oldList);
 	}
 
 }
