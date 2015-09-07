@@ -16,7 +16,7 @@ public class GroupData implements Comparable<GroupData> {
 
 	@Override
 	public String toString() {
-		return "GroupData [name=" + name + "]";
+		return "GroupData [name=" + name + ", header=" + header + ", footer=" + footer + "]";
 	}
 
 	@Override
