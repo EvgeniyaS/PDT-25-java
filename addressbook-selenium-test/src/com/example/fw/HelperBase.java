@@ -1,16 +1,19 @@
 package com.example.fw;
 
+import java.util.List;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public abstract class HelperBase {
 	
 	protected ApplicationManager manager;
-	protected WebDriver driver;
+	private WebDriver driver;
 	public boolean acceptNextAlert = true;
 	
 	public HelperBase(ApplicationManager manager) {
@@ -26,7 +29,15 @@ public abstract class HelperBase {
 	      return false;
 	    }
 	  }
-
+	
+	protected List<WebElement> findElements(By by) {
+		return driver.findElements(by);
+	}
+	
+	protected WebElement findElemnt(By by) {
+		return driver.findElement(by);
+	}
+	
 	protected String closeAlertAndGetItsText() {
 	    try {
 	      Alert alert = driver.switchTo().alert();
@@ -66,6 +77,10 @@ public abstract class HelperBase {
 		if (text != null) {
 			new Select(driver.findElement(locator)).selectByVisibleText(text);			
 		}
+	}
+	
+	protected String getUrl() {
+		return driver.getCurrentUrl();
 	}
 	
 }

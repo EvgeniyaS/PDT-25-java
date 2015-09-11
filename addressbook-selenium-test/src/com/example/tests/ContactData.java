@@ -1,20 +1,22 @@
 package com.example.tests;
 
+import java.util.List;
+
 public class ContactData implements Comparable<ContactData> {
-	public String firstname;
-	public String lastname;
-	public String address;
-	public String hometelephone;
-	public String mobile;
-	public String worktelephone;
-	public String email1;
-	public String email2;
-	public String bday;
-	public String bmonth;
-	public String byear;
-	public String contactgroup;
-	public String secondaryaddress;
-	public String phone2;
+	private String firstname;
+	private String lastname;
+	private String address;
+	private String hometelephone;
+	private String mobile;
+	private String worktelephone;
+	private String email1;
+	private String email2;
+	private String bday;
+	private String bmonth;
+	private String byear;
+	private String contactgroup;
+	private String secondaryaddress;
+	private String phone2;
 	
 	public ContactData(String firstname, String lastname, String address, String hometelephone, String mobile,
 			String worktelephone, String email1, String email2, String bday, String bmonth, String byear, String contactgroup, String secondaryaddress, String phone2) {
@@ -91,8 +93,143 @@ public class ContactData implements Comparable<ContactData> {
 	    int deptComp = this.lastname.toLowerCase().compareTo(other.lastname.toLowerCase());
 	    return ((deptComp == 0) ? this.firstname.toLowerCase().compareTo(other.firstname.toLowerCase()) : deptComp);
 	}
-	
 
+	protected void replacePhoneMail(ContactData contact, List<ContactData> oldList) {
+		if ((contact.hometelephone == "")&(contact.mobile == "")) {
+	    	contact.hometelephone = contact.worktelephone;		
+		} 
+	    else if ((contact.hometelephone == "")&(contact.mobile != "")){
+	    	contact.hometelephone = contact.mobile;	
+		}    
+	    if (contact.email1 == "") {
+	    	contact.email1 = contact.email2;
+	    	oldList.add(contact);
+			} else {
+			oldList.add(contact);
+		}
+	}
+	
+	public ContactData withFirstname(String firstname) {
+		this.firstname = firstname;
+		return this;
+	}
+	
+	public ContactData withLastname(String lastname) {
+		this.lastname = lastname;
+		return this;
+	}
+
+	public ContactData withAddress(String address) {
+		this.address = address;
+		return this;
+	}
+
+	public ContactData withHometelephone(String hometelephone) {
+		this.hometelephone = hometelephone;
+		return this;
+	}
+	
+	public ContactData withMobile(String mobile) {
+		this.mobile = mobile;
+		return this;
+	}
+	
+	public ContactData withWorktelephone(String worktelephone) {
+		this.worktelephone = worktelephone;
+		return this;
+	}
+	
+	public ContactData withEmail1(String email1) {
+		this.email1 = email1;
+		return this;
+	}
+	
+	public ContactData withEmail2(String email2) {
+		this.email2 = email2;
+		return this;
+	}
+	
+	public ContactData withSecondaryAddress(String secondaryaddress) {
+		this.secondaryaddress = secondaryaddress;
+		return this;
+	}
+	
+	public ContactData withPhone2(String phone2) {
+		this.phone2 = phone2;
+		return this;
+	}
+	
+	public ContactData withBday(String bday) {
+		this.bday = bday;
+		return this;
+	}
+	
+	public ContactData withByear(String byear) {
+		this.byear = byear;
+		return this;
+	}
+	
+	public ContactData withBmonth(String bmonth) {
+		this.bmonth = bmonth;
+		return this;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public String getHometelephone() {
+		return hometelephone;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public String getWorktelephone() {
+		return worktelephone;
+	}
+
+	public String getEmail1() {
+		return email1;
+	}
+
+	public String getEmail2() {
+		return email2;
+	}
+
+	public String getBday() {
+		return bday;
+	}
+
+	public String getBmonth() {
+		return bmonth;
+	}
+
+	public String getByear() {
+		return byear;
+	}
+
+	public String getContactgroup() {
+		return contactgroup;
+	}
+
+	public String getSecondaryaddress() {
+		return secondaryaddress;
+	}
+
+	public String getPhone2() {
+		return phone2;
+	}
+	
 	
 	
 }
