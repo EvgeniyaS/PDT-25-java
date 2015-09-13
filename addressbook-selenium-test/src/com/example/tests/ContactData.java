@@ -103,10 +103,10 @@ public class ContactData implements Comparable<ContactData> {
 		}    
 	    if (contact.email1 == "") {
 	    	contact.email1 = contact.email2;
-	    	oldList.add(contact);
-			} else {
-			oldList.add(contact);
-		}
+	    	//oldList.add(contact);
+			} //else {
+			//oldList.add(contact);
+		//}
 	}
 	
 	public ContactData withFirstname(String firstname) {
