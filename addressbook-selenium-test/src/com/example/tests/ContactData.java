@@ -94,19 +94,17 @@ public class ContactData implements Comparable<ContactData> {
 	    return ((deptComp == 0) ? this.firstname.toLowerCase().compareTo(other.firstname.toLowerCase()) : deptComp);
 	}
 
-	protected void replacePhoneMail(ContactData contact, List<ContactData> oldList) {
-		if ((contact.hometelephone == "")&(contact.mobile == "")) {
+	protected ContactData replacePhoneMail(ContactData contact, List<ContactData> oldList) {
+		if ((contact.hometelephone.equals(""))&(contact.mobile.equals(""))) {
 	    	contact.hometelephone = contact.worktelephone;		
 		} 
-	    else if ((contact.hometelephone == "")&(contact.mobile != "")){
+	    else if ((contact.hometelephone.equals(""))){
 	    	contact.hometelephone = contact.mobile;	
 		}    
-	    if (contact.email1 == "") {
+	    if (contact.email1.equals("")) {
 	    	contact.email1 = contact.email2;
-	    	//oldList.add(contact);
-			} //else {
-			//oldList.add(contact);
-		//}
+		} 
+	    return contact;
 	}
 	
 	public ContactData withFirstname(String firstname) {

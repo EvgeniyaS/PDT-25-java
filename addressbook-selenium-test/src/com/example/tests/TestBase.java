@@ -30,7 +30,7 @@ public Iterator<Object[]> randomValidGroupGenerator() {
 }
 
 
-private List<Object[]> wrapGroupsForDataProvider(List<GroupData> groups) {
+public static List<Object[]> wrapGroupsForDataProvider(List<GroupData> groups) {
 		List<Object[]> list = new ArrayList<Object[]>();
 		for (GroupData group : groups) {
 			list.add(new Object[]{group});
@@ -43,7 +43,7 @@ public Iterator<Object[]> randomValidContactGenerator() {
 	return wrapContactsForDataProvider(generateRandomContacts(5)).iterator();	
 }
 
-private List<Object[]> wrapContactsForDataProvider(List<ContactData> contacts) {
+public static List<Object[]> wrapContactsForDataProvider(List<ContactData> contacts) {
 	List<Object[]> list = new ArrayList<Object[]>();
 	for (ContactData contact : contacts) {
 		list.add(new Object[]{contact});
