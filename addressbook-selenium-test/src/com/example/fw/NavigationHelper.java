@@ -26,12 +26,7 @@ public class NavigationHelper extends HelperBase {
 	}
 
 	private boolean onGroupsPage() {
-		if (getUrl().contains("/group.php")
-				&& findElements(By.name("new")).size() > 0){
-			return true;
-		} else {
-			return false;
-		}
-	}
-		
+		return (getUrl().contains("/group.php")
+				&& findElements(By.name("new")).size() > 0);
+	}	
 }

@@ -40,7 +40,7 @@ public class ContactHelper extends HelperBase {
 		}
 	}
 
-	public ContactHelper createContact(ContactData contact, boolean CREATION) {
+	public ContactHelper createContact(ContactData contact) {
 		manager.navigateTo().mainPage();
 		gotoAddNewContact();
 		fillContactForm(contact, CREATION);
@@ -67,7 +67,7 @@ public class ContactHelper extends HelperBase {
 		 return this;		
 	}
 	
-	public ContactHelper contactModificationByDetails(int index, ContactData contact, boolean mODIFICATION2) {
+	public ContactHelper contactModificationByDetails(int index, ContactData contact) {
 		 gotoContactDetails(index);
 		 gotoContactModify();
 		 fillContactForm(contact, MODIFICATION);
@@ -78,7 +78,7 @@ public class ContactHelper extends HelperBase {
 	}
 
 
-	public ContactHelper contactModificationByEdit(int index, ContactData contact, boolean mODIFICATION2) {
+	public ContactHelper contactModificationByEdit(int index, ContactData contact) {
 		gotoContactEdit(index);
 		fillContactForm(contact, MODIFICATION);
 		clickContactUpdate();
@@ -118,7 +118,6 @@ public class ContactHelper extends HelperBase {
 
 	public ContactHelper submitContactCreation() {
 		click(By.name("submit"));
-		cachedContacts = null;
 		return this;
 	}
 
@@ -144,16 +143,14 @@ public class ContactHelper extends HelperBase {
 		return this;
 	}
 	
-	public ContactHelper clickContactDelete() {
+	public void clickContactDelete() {
 		click(By.xpath(".//*[@id='content']/form[2]/input[2]"));
 		cachedContacts = null;
-		return this;
 	}
 	
-	public ContactHelper clickContactUpdate() {
+	public void clickContactUpdate() {
 		click(By.xpath(".//*[@id='content']/form[1]/input[11]"));
 		cachedContacts = null;
-		return this;
 	}
 	
 	public ContactHelper gotoAddNewContact() {

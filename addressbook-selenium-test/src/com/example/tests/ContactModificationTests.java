@@ -6,7 +6,6 @@ import static org.hamcrest.Matchers.*;
 import java.util.Random;
 import org.testng.annotations.Test;
 import com.example.utils.SortedListOf;
-import static com.example.fw.ContactHelper.MODIFICATION;;
 
 public class ContactModificationTests extends TestBase {
 	
@@ -15,7 +14,7 @@ public class ContactModificationTests extends TestBase {
 	SortedListOf<ContactData> oldList = app.getContactHelper().getContacts();
     Random rnd = new Random();
     int index = rnd.nextInt(oldList.size()-1);
-	app.getContactHelper().contactModificationByDetails(index, contact, MODIFICATION);
+	app.getContactHelper().contactModificationByDetails(index, contact);
 	SortedListOf<ContactData> newList = app.getContactHelper().getContacts();
     contact.replacePhoneMail(contact, newList); 
     assertThat(newList, equalTo(oldList.without(index).withAdded(contact)));
@@ -26,7 +25,7 @@ public class ContactModificationTests extends TestBase {
 	SortedListOf<ContactData> oldList = app.getContactHelper().getContacts();
     Random rnd = new Random();
     int index = rnd.nextInt(oldList.size()-1);
-	app.getContactHelper().contactModificationByEdit(index, contact, MODIFICATION);
+	app.getContactHelper().contactModificationByEdit(index, contact);
 	SortedListOf<ContactData> newList = app.getContactHelper().getContacts();
     contact.replacePhoneMail(contact, newList); 
 	assertThat(newList, equalTo(oldList.without(index).withAdded(contact)));
