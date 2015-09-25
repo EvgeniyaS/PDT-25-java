@@ -1,0 +1,3 @@
+L:
+cd L:\GitHubRepositories\PDT-25-java\addressbook-selenium-test
+java -cp bin;L:\Eclipse\xstream-distribution-1.4.8-bin\xstream-1.4.8\lib\xstream-1.4.8.jar;L:\Eclipse\xstream-distribution-1.4.8-bin\xstream-1.4.8\lib\xstream\xpp3_min-1.1.4c.jar;L:\Eclipse\xstream-distribution-1.4.8-bin\xstream-1.4.8\lib\xstream\xmlpull-1.1.3.1.jar;L:\Eclipse\selenium-server-standalone-2.47.1.jar org.testng.TestNG testng-customsuite.xml
