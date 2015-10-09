@@ -7,7 +7,7 @@ import com.example.tests.GroupData;
 import com.example.utils.SortedListOf;
 
 
-public class GroupHelper extends HelperBase {
+public class GroupHelper extends WebDriverHelperBase {
 
 	public GroupHelper(ApplicationManager manager) {
 		super(manager);
@@ -55,6 +55,7 @@ public class GroupHelper extends HelperBase {
 	}
 	
 	public GroupHelper deleteGroup(int index) {
+		manager.navigateTo().groupsPage();
 		selectGroupByIndex(index);
 		submitGroupRemoval();
 		returnToGroupsPage();

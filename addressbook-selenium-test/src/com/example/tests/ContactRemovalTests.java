@@ -13,22 +13,22 @@ public class ContactRemovalTests extends TestBase {
 	@Test
 	
 	public void deleteSomeContactByDetails() {
-	SortedListOf<ContactData> oldList = app.getContactHelper().getContacts();
+	    SortedListOf<ContactData> oldList = new SortedListOf<ContactData>(app.getHibernateHelper().listContacts());
     Random rnd = new Random();
     int index = rnd.nextInt(oldList.size()-1);
 	app.getContactHelper().deleteContactByDetails(index);
-	SortedListOf<ContactData> newList = app.getContactHelper().getContacts();
+    SortedListOf<ContactData> newList = new SortedListOf<ContactData>(app.getHibernateHelper().listContacts());
     assertThat(newList, equalTo(oldList.without(index)));
 	}
 		
 	@Test
 	
 	public void deleteSomeContactByEdit() {
-	SortedListOf<ContactData> oldList = app.getContactHelper().getContacts();
+	SortedListOf<ContactData> oldList = new SortedListOf<ContactData>(app.getHibernateHelper().listContacts());
     Random rnd = new Random();
     int index = rnd.nextInt(oldList.size()-1);
 	app.getContactHelper().deleteContactByEdit(index);
-	SortedListOf<ContactData> newList = app.getContactHelper().getContacts();
+    SortedListOf<ContactData> newList = new SortedListOf<ContactData>(app.getHibernateHelper().listContacts());
 	assertThat(newList, equalTo(oldList.without(index)));
 	}
 }

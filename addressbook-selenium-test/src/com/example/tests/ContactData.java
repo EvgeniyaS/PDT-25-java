@@ -2,7 +2,10 @@ package com.example.tests;
 
 import java.util.List;
 
+import com.example.utils.SortedListOf;
+
 public class ContactData implements Comparable<ContactData> {
+	private String id;
 	private String firstname;
 	private String lastname;
 	private String address;
@@ -14,7 +17,7 @@ public class ContactData implements Comparable<ContactData> {
 	private String bday;
 	private String bmonth;
 	private String byear;
-	private String contactgroup;
+	//private String contactgroup;
 	private String secondaryaddress;
 	private String phone2;
 	
@@ -31,7 +34,7 @@ public class ContactData implements Comparable<ContactData> {
 		this.bday = bday;
 		this.bmonth = bmonth;
 		this.byear = byear;
-		this.contactgroup = contactgroup;
+		//this.contactgroup = contactgroup;
 		this.secondaryaddress = secondaryaddress;
 		this.phone2 = phone2;
 	}
@@ -94,7 +97,7 @@ public class ContactData implements Comparable<ContactData> {
 	    return ((deptComp == 0) ? this.firstname.toLowerCase().compareTo(other.firstname.toLowerCase()) : deptComp);
 	}
 
-	protected ContactData replacePhoneMail(ContactData contact, List<ContactData> oldList) {
+	protected ContactData replacePhoneMail(ContactData contact, SortedListOf<ContactData> oldList) {
 		if ((contact.hometelephone.equals(""))&(contact.mobile.equals(""))) {
 	    	contact.hometelephone = contact.worktelephone;		
 		} 
@@ -216,9 +219,9 @@ public class ContactData implements Comparable<ContactData> {
 		return byear;
 	}
 
-	public String getContactgroup() {
-		return contactgroup;
-	}
+	//public String getContactgroup() {
+		//return contactgroup;
+	//}
 
 	public String getSecondaryaddress() {
 		return secondaryaddress;
@@ -227,7 +230,69 @@ public class ContactData implements Comparable<ContactData> {
 	public String getPhone2() {
 		return phone2;
 	}
-	
-	
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setHometelephone(String hometelephone) {
+		this.hometelephone = hometelephone;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public void setWorktelephone(String worktelephone) {
+		this.worktelephone = worktelephone;
+	}
+
+	public void setEmail1(String email1) {
+		this.email1 = email1;
+	}
+
+	public void setEmail2(String email2) {
+		this.email2 = email2;
+	}
+
+	public void setBday(String bday) {
+		this.bday = bday;
+	}
+
+	public void setBmonth(String bmonth) {
+		this.bmonth = bmonth;
+	}
+
+	public void setByear(String byear) {
+		this.byear = byear;
+	}
+
+	//public void setContactgroup(String contactgroup) {
+		//this.contactgroup = contactgroup;
+	//}
+
+	public void setSecondaryaddress(String secondaryaddress) {
+		this.secondaryaddress = secondaryaddress;
+	}
+
+	public void setPhone2(String phone2) {
+		this.phone2 = phone2;
+	}
 	
 }

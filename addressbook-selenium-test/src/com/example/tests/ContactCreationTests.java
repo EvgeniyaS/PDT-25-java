@@ -25,9 +25,9 @@ public class ContactCreationTests extends TestBase {
 
   @Test(dataProvider = "contactsFromFile")
   public void testContactCreation(ContactData contact) throws Exception {
-	SortedListOf<ContactData> oldList = app.getContactHelper().getContacts();
+    SortedListOf<ContactData> oldList = new SortedListOf<ContactData>(app.getHibernateHelper().listContacts());
 	app.getContactHelper().createContact(contact);
-	SortedListOf<ContactData> newList = app.getContactHelper().getContacts();
+    SortedListOf<ContactData> newList = new SortedListOf<ContactData>(app.getHibernateHelper().listContacts());
     contact.replacePhoneMail(contact, newList); 
     assertThat(newList, equalTo(oldList.withAdded(contact)));
   }
